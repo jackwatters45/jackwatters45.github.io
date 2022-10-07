@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+:root {
+  --main-background-color: rgb(25, 25, 25);
+  --card-background-color: rgb(47, 47, 47);
+  --section-background-color: rgb(28, 28, 28);
+  --card-hover-background-color: rgb(55, 55, 55);
+  --main-font-color: rgba(255, 255, 255, .81);
+  --secondary-font-color: rgb(127, 127, 127);
+  --empty-font-color: rgba(255, 255, 255, 0.282);
+}
+
+body {
+  background-color: var(--main-background-color);
+  color: var(--main-font-color);
+  font-size: 14px;
+  line-height: 1.5;
+  user-select: none;
+}
+
+/* General Styles */
+a {
+  text-decoration: none;
+}
+
+hr {
+  background-color: var(--empty-font-color);
+  border: none;
+  height: 1px;
+}
+
+input {
+  background-color: transparent;
+  border: inherit;
+  outline: none;
+  color: var(--main-font-color);
+  font-size: 14px;
+}
+
+.shadow {
+  box-shadow: rgb(15 15 15 / 10%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 2px 4px;
+}
+
+.hidden {
+  display: none;
+}
+
+.github-logo {
+  height: 20px;
+  margin: auto 0;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.footer>a {
+  display: flex;
+}
