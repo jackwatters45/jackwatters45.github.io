@@ -26,6 +26,7 @@ body {
 /* General Styles */
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 hr {
@@ -50,9 +51,178 @@ input {
   display: none;
 }
 
+/* Hover Styling */
+.done:hover,
+.new:hover,
+.add-project:hover,
+.add-project-button:hover,
+
+.close:hover {
+  background-color: rgba(255, 255, 255, 0.055);
+  border-radius: 4px;
+}
+
+.card:hover {
+  background-color: var(--card-hover-background-color);
+}
+
+/* Cursor */
+.close,
+.new,
+.add-project,
+.card,
+.delete,
+.is-done>img,
+a {
+  cursor: pointer;
+}
+
+/* Assets */
 .github-logo {
   height: 20px;
   margin: auto 0;
+}
+
+img {
+  width: 16px;
+}
+
+.plus {
+  width: 14px;
+}
+
+/* Layout */
+.container {
+  display: grid;
+  height: 100vh;
+  margin: 0 auto;
+  grid-template-rows: 120px 1fr 30px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin: 0px 70px;
+  padding: 10px 0px;
+}
+
+.main-content {
+  display: flex;
+  margin: 0px 50px;
+}
+
+/* Main Content */
+/* Project */
+.sections {
+  display: flex;
+}
+
+.section,
+.add-project,
+.add-project-button {
+  margin: 4px;
+  width: 260px;
+  background-color: var(--section-background-color);
+  height: fit-content;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.header,
+.project-form,
+#todo-form {
+  display: grid;
+  grid-template-columns: 1fr 24px;
+  width: inherit;
+}
+
+.header-title {
+  width: fit-content;
+  padding: 0px 6px;
+  margin: 4px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  background-color: var(--card-background-color);
+}
+
+.header-input {
+  padding: 0px 6px;
+  margin: 4px;
+  margin-bottom: 8px;
+}
+
+.delete,
+.submit {
+  height: 24px;
+  align-self: center;
+  margin-bottom: 4px;
+  justify-content: center;
+}
+
+.delete {
+  display: flex;
+}
+
+.trash {
+  visibility: hidden
+}
+
+/* Todo Cards */
+.submit-card {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  height: 21px;
+  visibility: hidden;
+}
+
+#todo-form {
+  cursor: text;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card {
+  padding: 10px;
+  background-color: var(--card-background-color);
+  height: fit-content;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: rgb(15 15 15 / 10%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 2px 4px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.title {
+  padding: 4px;
+}
+
+.done {
+  display: flex;
+  gap: 5px;
+  font-size: 12px;
+  padding: 4px;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+}
+
+.new,
+.add-project,
+.add-project-button {
+  gap: 4px;
+  margin-top: 4px;
+  color: var(--secondary-font-color);
+  display: flex;
+}
+
+.new {
+  padding: 6px 0px 6px 6px;
 }
 
 /* Footer */
@@ -65,4 +235,66 @@ input {
 
 .footer>a {
   display: flex;
+}
+
+/* Overlay */
+.sidebar-positioning {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 430px;
+}
+
+.sidebar {
+  display: grid;
+  grid-template-rows: 36px 1fr;
+  margin-left: auto;
+  background: rgb(32, 32, 32);
+  box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px;
+  width: 100%;
+  height: 100%;
+  color: var(--secondary-font-color)
+}
+
+.close {
+  margin: 0px 12px;
+  display: flex;
+  width: fit-content;
+  align-self: center;
+  padding: 4px;
+}
+
+.properties {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 60px 40px 40px 40px 1fr;
+  padding: 48px;
+}
+
+.name {
+  font-size: 30px;
+  font-weight: 700;
+  grid-column: 1 / -1;
+  color: var(--main-font-color);
+}
+
+.priority,
+.date,
+.is-done {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.value {
+  color: var(--main-font-color);
+}
+
+.notes {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 0px;
 }
