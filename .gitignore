@@ -3,8 +3,5 @@ package-lock.json
 .eslintrc.json
 .eslintignore
 .babelrc
-package.json
-webpack.common.js
-webpack.dev.js
-webpack.prod.js
 dist
+.gitignore
