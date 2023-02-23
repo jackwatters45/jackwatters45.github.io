@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+:root {
+  --main-background-color: rgb(25, 25, 25);
+  --card-background-color: rgb(47, 47, 47);
+  --section-background-color: rgb(28, 28, 28);
+  --card-hover-background-color: rgb(55, 55, 55);
+  --main-font-color: rgba(255, 255, 255, .81);
+  --secondary-font-color: rgb(127, 127, 127);
+  --empty-font-color: rgba(255, 255, 255, 0.282);
+}
+
+body {
+  background-color: var(--main-background-color);
+  color: var(--main-font-color);
+  font-size: 14px;
+  line-height: 1.5;
+  user-select: none;
+}
+
+/* General Styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+hr {
+  background-color: var(--empty-font-color);
+  border: none;
+  height: 1px;
+  width: 100%
+}
+
+input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--main-font-color);
+  font-size: 14px;
+  width: 100%;
+}
+
+input::placeholder {
+  color: var(--empty-font-color);
+}
+
+textarea {
+    border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+  background-color: inherit;
+  font: inherit;
+  color: var(--main-font-color);
+}
+
+textarea::placeholder {
+  color: var(--secondary-font-color);
+}
+
+.shadow {
+  box-shadow: rgb(15 15 15 / 10%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 2px 4px;
+}
+
+button,
+img {
+  cursor: pointer;
+}
+
+button,
+form {
+  display: flex;
+  align-items: center;
+  background-color: inherit;
+  border: none;
+}
+
+button,
+img {
+  color: var(--secondary-font-color);
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.055);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #474c50;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--section-background-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--empty-font-color);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: rgba(255, 255, 255, .81) !important;
+}
+
+input[type="date"] {
+  align-items: center;
+  -webkit-align-items: center;
+  display: flex;
+  overflow: hidden;
+  padding: 0;
+  width: fit-content;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(100%);
+}
