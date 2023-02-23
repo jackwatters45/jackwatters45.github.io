@@ -22,18 +22,13 @@ export const SidebarContext = createContext({});
 const MainContent = () => {
   const [reposData, setReposData] = useState([]);
   useEffect(() => {
-    const octokit = new Octokit({
-      auth: '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',
-    });
-
+    const octokit = new Octokit();
     try {
       const getRepos = async () => {
-        if (reposData.length) return;
         const reposResponse = await octokit.request('GET /users/{user}/repos', {
           user: 'jackwatters45',
         });
 
-        console.log(reposResponse)
         await reposResponse.data.forEach((repo) =>
           setReposData((prev) => [...prev, getRepoData(repo)]),
         );
@@ -42,34 +37,51 @@ const MainContent = () => {
     } catch (e) {
       console.log(e);
     }
-  }, [reposData.length]);
+  }, []);
 
   const [projectMonth, setProjectMonth] = useState([]);
   useEffect(() => {
+    if (!reposData) return;
+
     const reposCopy = [...reposData];
     reposCopy.sort((a, b) => b.createdTime - a.createdTime);
 
     const months = new Set(reposCopy.map((repo) => repo.month));
-
     months.forEach((month) => {
       const reposMonth = reposCopy.filter((repo) => repo.month === month);
-
       setProjectMonth((prev) => [...prev, { month, repos: reposMonth }]);
     });
   }, [reposData]);
 
-  useEffect(()=> {console.log(reposData)})
-
   const [selectedTodo, setSelectedTodo] = useState();
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
-  const toggleSidebar = (todo) => {
-    // TODO not sure if need change -> if (!todo.name) return;
+  const closeSidebar = () => setIsSidebarVisible(false);
+  const toggleSidebar = (e, todo) => {
+    const isCurrentlyOpen = () =>
+      isSidebarVisible &&
+      (e.target.outerHTML.includes(selectedTodo.name) ||
+        e.target.parentElement.outerHTML.includes(selectedTodo.name));
+    if (isCurrentlyOpen()) return setIsSidebarVisible(false);
 
-    if (isSidebarVisible) return setIsSidebarVisible(false); // TODO check if different card clicked
     setIsSidebarVisible(true);
     setSelectedTodo(todo);
   };
-  const closeSidebar = () => setIsSidebarVisible(false);
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (
+        isSidebarVisible &&
+        !e.target.closest('.sidebar') &&
+        !e.target.className.includes('card') &&
+        !e.target.parentElement.className.includes('card')
+      )
+        setIsSidebarVisible(false);
+    };
+    window.addEventListener('click', handleClick);
+    return () => {
+      window.removeEventListener('click', handleClick);
+    };
+  }, [isSidebarVisible]);
 
   return (
     <MainContentContainer>

@@ -33,7 +33,7 @@ const Todo = ({ data }) => {
   const { toggleSidebar } = useContext(SidebarContext);
   const { name, createdTime } = data;
   return (
-    <TodoContainer onClick={() => toggleSidebar(data)}>
+    <TodoContainer className='card' onClick={(e) => toggleSidebar(e, data)}>
       <TodoName>{name}</TodoName>
       <TodoCreatedDate>Created: {createdTime.toDateString()}</TodoCreatedDate>
     </TodoContainer>

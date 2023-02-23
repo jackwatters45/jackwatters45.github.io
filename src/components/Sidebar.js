@@ -37,7 +37,7 @@ const CloseButton = styled(Icon)`
 const PropertiesContainer = styled.div`
   display: grid;
   grid-template-columns: 140px auto;
-  grid-template-rows: 60px auto auto 40px 40px;
+  grid-template-rows: repeat(5, auto);
   padding: 48px 48px 12px 48px;
   grid-column: 2;
   // width: inherit;
@@ -55,6 +55,7 @@ const PropertyLabel = styled.div`
 
 const TodoName = styled.div`
   width: fit-content;
+  margin: 0 0 10px 0;
   font-size: 30px;
   font-weight: 700;
   grid-column: 1 / -1;
@@ -128,7 +129,7 @@ const Sidebar = ({ isSidebarVisible, closeSidebar, todo }) => {
         setSidebarWidth(
           Math.min(
             Math.max(
-              500,
+              400,
               sidebarRef.current.getBoundingClientRect().right -
                 mouseMoveEvent.clientX,
             ),
@@ -148,16 +149,16 @@ const Sidebar = ({ isSidebarVisible, closeSidebar, todo }) => {
     };
   }, [resize, stopResizing]);
 
-  useEffect(() => {
-    console.log(todo);
-  }, [todo]);
-
   const formatDate = (date) =>
     `${date.toDateString()} ${date.toLocaleTimeString()}`;
 
   if (isSidebarVisible) {
     return (
-      <SidebarContainer ref={sidebarRef} style={{ width: sidebarWidth }}>
+      <SidebarContainer
+        className="sidebar"
+        ref={sidebarRef}
+        style={{ width: sidebarWidth }}
+      >
         <Dragger onMouseDown={startResizing} />
         <CloseButton onClick={closeSidebar} path={mdiChevronRight} size={1} />
         <PropertiesContainer style={{ width: sidebarWidth - 5 }}>
