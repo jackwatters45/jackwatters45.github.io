@@ -59,6 +59,8 @@ const TodoName = styled.div`
   font-size: 30px;
   font-weight: 700;
   grid-column: 1 / -1;
+  word-break: break-word;
+  display: inline-block;
 `;
 
 const PropertyValue = styled.p`
