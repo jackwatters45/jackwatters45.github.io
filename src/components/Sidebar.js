@@ -121,7 +121,7 @@ const Sidebar = ({ isSidebarVisible, closeSidebar, todo }) => {
   // https://codereview.stackexchange.com/questions/263970/react-based-resizable-sidebar
   const sidebarRef = useRef(null);
   const [isResizing, setIsResizing] = useState(false);
-  const [sidebarWidth, setSidebarWidth] = useState(500);
+  const [sidebarWidth, setSidebarWidth] = useState(400);
 
   const stopResizing = useCallback(() => setIsResizing(false), []);
   const startResizing = useCallback(() => setIsResizing(true), []);
@@ -163,28 +163,20 @@ const Sidebar = ({ isSidebarVisible, closeSidebar, todo }) => {
       >
         <Dragger onMouseDown={startResizing} />
         <CloseButton onClick={closeSidebar} path={mdiChevronRight} size={1} />
-        <PropertiesContainer style={{ width: sidebarWidth - 5 }}>
+        <PropertiesContainer>
           <TodoName>{toTitleCase(todo.name)}</TodoName>
           <PropertyLabel>
             <Icon path={mdiLinkVariant} size={0.75} />
             <p>Repo</p>
           </PropertyLabel>
-          <PropertyValueLink
-            href={todo.repoUrl}
-            style={{ width: sidebarWidth - 241 }}
-          >
+          <PropertyValueLink href={todo.repoUrl}>
             {todo.repoUrl}
           </PropertyValueLink>
           <PropertyLabel>
             <Icon path={mdiLinkVariant} size={0.75} />
             <p>Live Project</p>
           </PropertyLabel>
-          <PropertyValueLink
-            href={todo.url}
-            style={{ width: sidebarWidth - 241 }}
-          >
-            {todo.url}
-          </PropertyValueLink>
+          <PropertyValueLink href={todo.url}>{todo.url}</PropertyValueLink>
           <PropertyLabel>
             <Icon path={mdiCalendarMonth} size={0.75} />
             <p>Created Time</p>
