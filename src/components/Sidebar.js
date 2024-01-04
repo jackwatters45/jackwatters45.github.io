@@ -135,7 +135,7 @@ const Sidebar = ({ isSidebarVisible, closeSidebar, todo }) => {
               sidebarRef.current.getBoundingClientRect().right -
                 mouseMoveEvent.clientX,
             ),
-            (document.body.clientWidth * 2) / 3,
+            document.body.clientWidth * (2 / 3),
           ),
         );
     },
